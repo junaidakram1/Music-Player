@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Baskervville+SC&family=New+Amsterdam&display=swap');
+
+* {
+    box-sizing: border-box;
+    /* margin: 0; */
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    font-family: "Baskervville SC", sans-serif;
+    background-image: linear-gradient(0deg, rgb(224, 247, 250) 23.8%, rgb(178, 235, 242) 92%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.music-wrapper {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 20px 20px 0 rgba(0, 122, 116, 0.5);
+    display: flex;
+    position: relative;
+    z-index: 100;
+    padding: 20px 20px;
+
+}
+
+.img-wrapper {
+    position: relative;
+    width: 110px;
+}
+
+/* Record animation*/
+.img-wrapper::after {
+    content: '';
+    background-color: white;
+    height: 15px;
+    width: 15px;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    border-radius: 50%;
+    transform: translate(-50%, -110%);
+    border: 1px solid black;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+
+
+}
+
+.img-wrapper img {
+    width: inherit;
+    height: 110px;
+    border-radius: 50%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    animation: rotate 3s linear infinite;
+    animation-play-state: paused;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+
+}
+
+.music-wrapper.play .img-wrapper img {
+    animation-play-state: running;
+}
+
+/*Buttons*/
+
+.buttons {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.action-btn {
+
+    border: none;
+    background: none;
+    color: rgba(74, 74, 74, 0.5);
+    cursor: pointer;
+    font-size: 20px;
+    padding: 10px 35px;
+    /* margin: 0 20px; */
+}
+
+.action-big {
+    font-size: 30px;
+}
+
+.action-btn:focus {
+    outline: 0;
+}
+
+.action-btn:active {
+    color: #007A74;
+}
+
+
+.music-info {
+    border-radius: 10px 10px 0 0;
+    background-color: rgba(255, 255, 255, 0.4);
+    width: calc(100% - 150px);
+    position: absolute;
+    left: 130px;
+    top: 0;
+    transform: translateY(0%);
+    /* z-index: 1000; */
+    opacity: 0;
+    transition: transform 0.3s ease-in, opacity 0.3s ease in;
+}
+
+.music-info h3 {
+    margin: 0;
+    color: #40a829;
+    text-align: center;
+
+}
+
+.music-wrapper.play .music-info {
+    transform: translateY(-100%);
+    opacity: 1;
+}
+
+/* Timer */
+.current {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    color: #40a829;
+    display: flex;
+    flex-direction: end;
+    /* padding-bottom: 10px; */
+}
+
+h1 {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #40a829;
+    text-transform: capitalize;
+    letter-spacing: 4px;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 20px 20px 0 rgba(0, 122, 116, 0.5);
+    border-radius: 10px 30px;
+    padding: 10px 40px;
+    margin-bottom: 300px;
+}
+
+.progress-wrapper {
+    background: #fff;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    height: 4px;
+}
+
+.progress {
+    background-color: #007A74;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+
+
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+
+
+    h1 {
+        font-size: 30px;
+    }
+
+    .music-wrapper {
+        width: 96%;
+        padding: 10px;
+    }
+
+    .img-wrapper::after {
+        display: none;
+
+
+    }
+}
