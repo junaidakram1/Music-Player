@@ -1,1 +1,1 @@
-Music Player using HTML, CSS, Vanilla JS. (Exploring HTML5 Audio API)
+Music Player using HTML, CSS and Vanilla JS. (Exploring HTML5 Audio API)
