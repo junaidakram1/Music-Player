@@ -8,14 +8,19 @@ const audio = document.querySelector('audio');
 const progress = document.querySelector('.progress');
 const progressWrapper = document.querySelector('.progress-wrapper');
 const currentTimeDisplay = document.querySelector('#current-time');
+const playlist = document.querySelector('#playlist');
+const menu = document.querySelector('#menu');
+const menuToggle = document.querySelector('#menu-toggle');
+
 
 
 // Loading songs
 
-const songs = ['Big Dawgs - Hanumankind', 'Lalala - bbno$', 'MVP - Shubh'];
+const songs = ['Big Dawgs - Hanumankind', 'Lalala - bbno$', 'MVP - Shubh', 'Offshore - Shubh'];
 
 let songIndex = 0;
 
+// Loading mp3 songs and cover photos
 
 function loadSong(songs) {
     title.innerText = songs;
@@ -118,8 +123,32 @@ audio.addEventListener('timeupdate', (e) => {
 
 progressWrapper.addEventListener('click', timeSlider);
 
+
 audio.addEventListener('ended', nextSong);
 
 
+// Creating Playlist of the songs array
+
+songs.forEach((song, index) => {
+
+    const li = document.createElement("li");
+    li.textContent = song;
+    playlist.appendChild(li);
+
+    li.addEventListener('click', () => {
+
+        songIndex = index;
+        loadSong(songs[songIndex]);
+        playSong();
+
+    });
 
 
+
+});
+
+menuToggle.addEventListener('click', () => {
+
+    menu.classList.toggle('hidden');
+    menuToggle.classList.toggle('open');
+});
